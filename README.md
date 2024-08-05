@@ -25,10 +25,10 @@ Modern Typography: Utilizes the Poppins font family from Google Fonts.
 
 **Screenshots**
 
-![Desktop View]()
-![Mobile View]()
+![Desktop View](https://drive.google.com/file/d/1j7WnH3M5GmBZ2EOEaa4wkAJPvLObAuP1/view?usp=sharing)
+![Mobile View](https://drive.google.com/file/d/1j9KVWFoaFKgF2WDhqRdr7mjqVHRq3r5Q/view?usp=sharing)
 
 **Video Presentation**
 
-I leveraged Loom a chrome extension to create my video presentation, please see link here: (https://www.loom.com/share/6378c7c7f6be44aaaf6f5d459dedae0a?sid=7727d3d8-99e9-4014-9077-21dd66979448)
+I leveraged Loom a chrome extension to create my video presentation, please see link here: (https://www.loom.com/share/6378c7c7f6be44aaaf6f5d459dedae0a?sid=ad20fc4e-4233-4ae0-a335-0128c4b6109d)
 
