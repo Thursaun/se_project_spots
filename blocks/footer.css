@@ -1,13 +1,13 @@
 .footer {
-  height: 20vh;
+  min-height: 20vh;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .footer__copyright {
-  width: 104px;
-  height: 16px;
+  max-width: 104px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1;
