@@ -32,3 +32,7 @@ Modern Typography: Utilizes the Poppins font family from Google Fonts.
 
 I leveraged Loom a chrome extension to create my video presentation, please see link here: (https://www.loom.com/share/6378c7c7f6be44aaaf6f5d459dedae0a?sid=ad20fc4e-4233-4ae0-a335-0128c4b6109d)
 
+**Github**
+
+Please review link to project on Github: (https://github.com/Thursaun/se_project_spots)
+
