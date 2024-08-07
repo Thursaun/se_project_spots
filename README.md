@@ -34,5 +34,5 @@ I leveraged Loom a chrome extension to create my video presentation, please see 
 
 **Github**
 
-Please review link to project on Github: (https://github.com/Thursaun/se_project_spots)
+Please review link to project on Github: (https://thursaun.github.io/se_project_spots/)
 
