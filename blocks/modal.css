@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 16px;
   visibility: visible;
 }
 
@@ -42,6 +43,7 @@
 .modal__title {
   margin: 0 0 32px;
   width: 169px;
+  font-weight: 500;
   font-size: 32px;
   line-height: 1;
   color: #212121;
@@ -73,3 +75,35 @@
   font-size: 16px;
   line-height: 1;
 }
+
+@media  screen and (max-width: 627px) {
+  .modal {
+    padding: 0 10px;
+  }
+
+  .modal__container {
+    padding: 12px;
+  }
+
+  .modal__close-btn {
+    top: 12px;
+    right: 12px;
+  }
+
+  .modal__title {
+    font-size: 20px;
+    margin: 10px 0 34px;
+  }
+
+  .modal__label {
+    margin-bottom: 24px;
+  }
+
+  .modal__input {
+    font-size: 16px;
+  }
+
+  .modal__submit-btn {
+    width: 100%;
+  }
+  }
