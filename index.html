@@ -52,8 +52,10 @@
     <!-- Edit Profile Modal-->
     <div class="modal" id="edit-modal">
       <div class="modal__container">
-        <button type="submit" class="modal__close-btn"></button>
-        <h2 class="modal__title">Edit Profile</h2>
+        <div class="modal__header">
+          <button type="submit" class="modal__close-btn"></button>
+          <h2 class="modal__title">Edit Profile</h2>
+        </div>
         <form name="edit-profile" class="modal__form">
           <label for="profile-name-input" class="modal__label">
             Name
@@ -70,8 +72,10 @@
     <!-- New Post Modal-->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
-        <button type="submit" class="modal__close-btn"></button>
-        <h2 class="modal__title">New Post</h2>
+        <div class="modal__header">
+          <button type="submit" class="modal__close-btn mod"></button>
+          <h2 class="modal__title">New Post</h2>
+        </div>
         <form name="add-card" id="add-card-form" class="modal__form">
           <label for="add-card-link-input" class="modal__label">
             Image Link
