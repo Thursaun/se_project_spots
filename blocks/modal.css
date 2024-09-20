@@ -71,7 +71,7 @@
 }
 
 .modal__caption {
-  margin: 8px 0 0 0;
+  margin: 4px 0 0 0;
   padding: 4px 8px;
   background-color: #212121;
   border-radius: 8px;
@@ -134,12 +134,16 @@
 
   .modal__close-btn_type_preview {
     top: -35px;
-    right: 40px;
+    right: 20px;
   }
 
   .modal__header {
     font-size: 20px;
     margin: 10px 0 34px;
+  }
+
+  .modal__image {
+    max-width: 288px;
   }
 
   .modal__label {
