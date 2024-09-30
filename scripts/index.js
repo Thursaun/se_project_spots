@@ -96,12 +96,31 @@ const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
 // Functions
+function handleEscKey(evt) {
+  if (evt.key === 'Escape') {
+    const openModal = document.querySelector('.modal_opened');
+    if (openModal) {
+      closeModal(openModal);
+    }
+  }
+}
+
+function handleOverlayClick(evt) {
+  if (evt.target.classList.contains('modal_opened')) {
+    closeModal(evt.target);
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener('keydown', handleEscKey);
+  modal.addEventListener('mousedown', handleOverlayClick);
 };
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener('keydown', handleEscKey);
+  modal.removeEventListener('mousedown', handleOverlayClick);
 };
 
 function handleEditFormSubmit(evt) {
@@ -145,3 +164,4 @@ previewModalCloseBtn.addEventListener("click", () => {
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardFormElement.addEventListener("submit", handleAddCardSubmit);
+
