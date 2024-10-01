@@ -46,6 +46,17 @@ const toggleButtonState = (inputList, buttonEl, config) => {
   }
 };
 
+const resetValidation = (formEl, config) => {
+  const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
+  const buttonEl = formEl.querySelector(config.submitButtonSelector);
+
+  inputList.forEach((inputEl) => {
+    hideInputError(formEl, inputEl, config);
+  });
+
+  toggleButtonState(inputList, buttonEl, config);
+};
+
 const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const buttonEl = formEl.querySelector(config.submitButtonSelector);
@@ -58,6 +69,11 @@ const setEventListeners = (formEl, config) => {
       toggleButtonState(inputList, buttonEl, config);
     });
   });
+
+  formEl.addEventListener("reset", () => {
+    resetValidation(formEl, config);
+    console.log("Form is reset");
+  });
 };
 
 
@@ -69,4 +85,3 @@ const enableValidation = (config) => {
   };
 
 enableValidation(settings);
-
