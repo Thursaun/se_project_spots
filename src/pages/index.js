@@ -1,3 +1,6 @@
+import "../pages/index.css";
+import { enableValidation, settings } from "../scripts/validation.js";
+
 //Cards JS
 const initialCards = [
   {
@@ -37,8 +40,6 @@ function getCardElement(data) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
   const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
-
-
 
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
@@ -172,3 +173,4 @@ closeButtons.forEach((button) => {
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardFormElement.addEventListener("submit", handleAddCardSubmit);
 
+enableValidation(settings);
