@@ -21,7 +21,7 @@ export const hideInputError = (formEl, inputEl, config) => {
   errorMsgEl.textContent = "";
 };
 
-const checkInputValidity = (formEl, inputEl, config) => {
+export const checkInputValidity = (formEl, inputEl, config) => {
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage, config);
   } else {
@@ -29,13 +29,13 @@ const checkInputValidity = (formEl, inputEl, config) => {
   }
 };
 
-const hasInvalidInput = (inputList) => {
+export const hasInvalidInput = (inputList) => {
   return inputList.some((inputEl) => {
     return !inputEl.validity.valid;
   });
 };
 
-const toggleButtonState = (inputList, buttonEl, config) => {
+export const toggleButtonState = (inputList, buttonEl, config) => {
   console.log(hasInvalidInput(inputList));
   if (hasInvalidInput(inputList)) {
     buttonEl.disabled = true;
@@ -49,15 +49,13 @@ const toggleButtonState = (inputList, buttonEl, config) => {
 export const resetValidation = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const buttonEl = formEl.querySelector(config.submitButtonSelector);
-
   inputList.forEach((inputEl) => {
     hideInputError(formEl, inputEl, config);
   });
-
   toggleButtonState(inputList, buttonEl, config);
 };
 
-const setEventListeners = (formEl, config) => {
+export const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const buttonEl = formEl.querySelector(config.submitButtonSelector);
 
@@ -72,7 +70,6 @@ const setEventListeners = (formEl, config) => {
 
   formEl.addEventListener("reset", () => {
     resetValidation(formEl, config);
-    console.log("Form is reset");
   });
 };
 

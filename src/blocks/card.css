@@ -50,6 +50,7 @@
 
 .card__like-btn {
   background-image: url(../images/like.svg);
+  background-repeat: no-repeat;
   margin: 12px 0 0;
   width: 23px;
   height: 20px;
@@ -67,11 +68,14 @@
 
 .card__like-btn_liked {
   background-image: url("../images/like_liked.svg");
+  background-repeat: no-repeat;
+  background-color: transparent;
   opacity: 1;
 }
 
 .card__like-btn_liked:hover {
   background-image: url("../images/liked_likedhover.svg");
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 628px) {
