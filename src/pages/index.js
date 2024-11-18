@@ -1,7 +1,7 @@
 import "../pages/index.css";
 import { enableValidation, resetValidation, settings } from "../scripts/validation.js";
 import Api from "../utils/api.js";
-import { setButtonText, resetForms } from "../utils/helper.js";
+import { handleSubmit } from "../utils/helper.js";
 
 
 // DOM Elements
@@ -110,84 +110,69 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener('keydown', handleEscKey);
   modal.removeEventListener('mousedown', handleOverlayClick);
-
-  const formEl = modal.querySelector("form");
-  if (formEl) {
-    resetForms(formEl);
-    resetValidation(formEl, settings);
-  }
 };
 
 function handleEscKey(evt) {
   if (evt.key === 'Escape') {
     const activeModal = document.querySelector('.modal_opened');
     if (activeModal) {
-      closeModal(activeModal, settings);
+      closeModal(activeModal);
     }
   }
 }
 
 function handleOverlayClick(evt) {
   if (evt.target.classList.contains('modal_opened')) {
-    closeModal(evt.target, evt.forms);
+    closeModal(evt.target);
   }
 }
 
-function handleEditFormSubmit(evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-  api.editUserInfo({ name: editModalNameInput.value, about: editModalDescriptionInput.value})
-  .then((userInfo) => {
+function makeEditRequest() {
+  return api.editUserInfo({
+    name: editModalNameInput.value,
+    about: editModalDescriptionInput.value
+  }).then((userInfo) => {
     profileName.textContent = userInfo.name;
     profileDescription.textContent = userInfo.about;
-  })
-  .then(() => closeModal(editModal, editFormElement))
-  .catch(console.error)
-  .finally(() => {
-    setButtonText(submitBtn, false);
   });
+}
+
+function handleEditFormSubmit(evt) {
+  handleSubmit(makeEditRequest, evt, 'Saving...');
+}
+
+function makeCardRequest() {
+  return api.addNewCard({name: cardNameInput.value, link: cardLinkInput.value})
+  .then(renderCard)
+  .then(() => closeModal(cardModal, cardFormElement))
 }
 
 function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-  api.addNewCard({name: cardNameInput.value, link: cardLinkInput.value})
-  .then(renderCard)
-  .then(() => closeModal(cardModal, cardFormElement))
-  .catch(console.error)
-  .finally(() => {
-    setButtonText(submitBtn, false);
-  });
+  handleSubmit(makeCardRequest, evt, 'Saving...');
+}
+
+function makeAvatarRequest() {
+  return api.editUserAvatar({ avatar: avatarLinkInput.value })
+  .then((userPic) => {
+    profileImage.src = userPic.avatar;
+    closeModal(avatarModal);
+  })
 }
 
 function handleAvatarSubmit(evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-  api.editUserAvatar({ avatar: avatarLinkInput.value })
-  .then((userPic) => {
-    profileImage.src = userPic.avatar;
-    closeModal(avatarModal, avatarFormElement);
-  })
-  .finally(() => {
-    setButtonText(submitBtn, false);
-  });
+  handleSubmit(makeAvatarRequest, evt, 'Saving...');
 }
 
-function handleDeleteSubmit (evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true, "Delete", "Deleting...");
-  api.deleteCard(selectedCardId)
+function makeDeleteRequest() {
+  return api.deleteCard(selectedCardId)
   .then(() => {
     selectedCard.remove();
     closeModal(deleteModal);
   })
-  .finally(() => {
-    setButtonText(submitBtn, false, "Delete", "Deleting...");
-  });
+}
+
+function handleDeleteSubmit(evt) {
+  handleSubmit(makeDeleteRequest, evt, 'Deleting...');
 }
 
 function handleDeleteCard(cardElement, cardId) {
@@ -209,7 +194,6 @@ function handleLikeCard(evt, id) {
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
-  resetValidation(editFormElement, settings)
   openModal(editModal);
 });
 

@@ -53,6 +53,7 @@ export const resetValidation = (formEl, config) => {
     hideInputError(formEl, inputEl, config);
   });
   toggleButtonState(inputList, buttonEl, config);
+  formEl.reset();
 };
 
 export const setEventListeners = (formEl, config) => {

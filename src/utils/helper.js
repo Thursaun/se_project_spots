@@ -1,16 +1,28 @@
-import { resetValidation } from "../scripts/validation";
-
-export function setButtonText (btn, isLoading, defaultText ="Save", loadingText="Saving..." ) {
+export function renderLoading(isLoading, button, buttonText='Save', loadingText='Saving...') {
   if (isLoading) {
-    btn.textContent = loadingText;
+    button.textContent = loadingText
   } else {
-    btn.textContent = defaultText;
+    button.textContent = buttonText
   }
 }
 
- export function resetForms(formEl) {
-  formEl.reset();
+export function handleSubmit(request, evt, loadingText = 'Saving...') {
+  evt.preventDefault();
+
+  const submitButton = evt.submitter;
+  const initialText = submitButton.textContent;
+  renderLoading(true, submitButton, initialText, loadingText);
+  request()
+    .then(() => {
+      evt.target.reset();
+    })
+    .catch(console.error)
+    .finally(() => {
+      renderLoading(false, submitButton, initialText);
+    });
 }
+
+
 
 // //Cards JS
 // const initialCards = [
