@@ -203,13 +203,19 @@
     width: 169px;
   }
 
+  .modal__title-delete {
+    width: 95%;
+  }
+
   .modal__header {
     font-size: 20px;
     margin: 10px 0 34px;
   }
 
   .modal__image {
-    max-width: 288px;
+    min-width: 288px;
+    display: block;
+    object-fit: cover;
   }
 
   .modal__label {
