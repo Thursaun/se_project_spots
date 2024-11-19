@@ -57,13 +57,11 @@ api.getAppInfo()
     cards.forEach((item) => {
       renderCard(item);
     });
-    return api.getUserInfo()
-    .then((userInfo) => {
       profileName.textContent = userInfo.name;
       profileDescription.textContent = userInfo.about;
       profileImage.src = userInfo.avatar;
     })
-  }).catch(console.error);
+    .catch(console.error);
 
 function getCardElement(data) {
   console.log(data)
@@ -135,7 +133,8 @@ function makeEditRequest() {
     profileName.textContent = userInfo.name;
     profileDescription.textContent = userInfo.about;
   })
-  .then(() => closeModal(editModal));
+  .then(() => closeModal(editModal))
+  .catch(console.error);
 }
 
 function handleEditFormSubmit(evt) {
@@ -146,6 +145,7 @@ function makeCardRequest() {
   return api.addNewCard({name: cardNameInput.value, link: cardLinkInput.value})
   .then(renderCard)
   .then(() => closeModal(cardModal))
+  .catch(console.error);
 }
 
 function handleAddCardSubmit(evt) {
@@ -158,6 +158,7 @@ function makeAvatarRequest() {
     profileImage.src = userPic.avatar;
     closeModal(avatarModal);
   })
+  .catch(console.error);
 }
 
 function handleAvatarSubmit(evt) {
@@ -170,6 +171,7 @@ function makeDeleteRequest() {
     selectedCard.remove();
     closeModal(deleteModal);
   })
+  .catch(console.error);
 }
 
 function handleDeleteSubmit(evt) {
