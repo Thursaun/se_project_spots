@@ -134,7 +134,8 @@ function makeEditRequest() {
   }).then((userInfo) => {
     profileName.textContent = userInfo.name;
     profileDescription.textContent = userInfo.about;
-  });
+  })
+  .then(() => closeModal(editModal));
 }
 
 function handleEditFormSubmit(evt) {
@@ -144,7 +145,7 @@ function handleEditFormSubmit(evt) {
 function makeCardRequest() {
   return api.addNewCard({name: cardNameInput.value, link: cardLinkInput.value})
   .then(renderCard)
-  .then(() => closeModal(cardModal, cardFormElement))
+  .then(() => closeModal(cardModal))
 }
 
 function handleAddCardSubmit(evt) {
