@@ -133,8 +133,7 @@ function makeEditRequest() {
     profileName.textContent = userInfo.name;
     profileDescription.textContent = userInfo.about;
   })
-  .then(() => closeModal(editModal))
-  .catch(console.error);
+  .then(() => closeModal(editModal));
 }
 
 function handleEditFormSubmit(evt) {
@@ -144,8 +143,7 @@ function handleEditFormSubmit(evt) {
 function makeCardRequest() {
   return api.addNewCard({name: cardNameInput.value, link: cardLinkInput.value})
   .then(renderCard)
-  .then(() => closeModal(cardModal))
-  .catch(console.error);
+  .then(() => closeModal(cardModal));
 }
 
 function handleAddCardSubmit(evt) {
@@ -157,8 +155,7 @@ function makeAvatarRequest() {
   .then((userPic) => {
     profileImage.src = userPic.avatar;
     closeModal(avatarModal);
-  })
-  .catch(console.error);
+  });
 }
 
 function handleAvatarSubmit(evt) {
@@ -170,8 +167,7 @@ function makeDeleteRequest() {
   .then(() => {
     selectedCard.remove();
     closeModal(deleteModal);
-  })
-  .catch(console.error);
+  });
 }
 
 function handleDeleteSubmit(evt) {
